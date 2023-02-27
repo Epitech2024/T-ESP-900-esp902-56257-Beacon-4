@@ -1,0 +1,39 @@
+[submodule "adminservice"]
+	path = adminservice
+	url = ../beacon-adminservice.git
+[submodule "authservice"]
+	path = authservice
+	url = ../beacon-authservice.git
+[submodule "backofficeapp"]
+	path = backofficeapps
+	url = ../Beacon-BackOfficeApp.git
+[submodule "chatservice"]
+	path = chatservice
+	url = ../beacon-chatservice.git
+[submodule "devicefirmware"]
+	path = devicefirmware
+	url = ../beacon-devicefirmware.git
+[submodule "deviceservice"]
+	path = deviceservice
+	url = ../beacon-deviceservice.git
+[submodule "fileservice"]
+	path = fileservice
+	url = ../beacon-fileservice.git
+[submodule "landingapp"]
+	path = landingapp
+	url = ../beacon-landingapp.git
+[submodule "mapservice"]
+	path = mapservice
+	url = ../beacon-mapservice.git
+[submodule "mobileapp"]
+	path = mobileapp
+	url = ../Beacon-MobileApp.git
+[submodule "notificationservice"]
+	path = notificationservice
+	url = ../beacon-notificationservice.git
+[submodule "theftservice"]
+	path = theftservice
+	url = ../beacon-theftservice.git
+[submodule "userservice"]
+	path = userservice
+	url = ../Beacon-UserService.git
