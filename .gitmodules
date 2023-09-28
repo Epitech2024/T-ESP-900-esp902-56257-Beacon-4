@@ -1,39 +1,18 @@
-[submodule "adminservice"]
-	path = adminservice
-	url = ../beacon-adminservice.git
-[submodule "authservice"]
-	path = authservice
-	url = ../beacon-authservice.git
-[submodule "backofficeapp"]
-	path = backofficeapps
-	url = ../Beacon-BackOfficeApp.git
-[submodule "chatservice"]
-	path = chatservice
-	url = ../beacon-chatservice.git
-[submodule "devicefirmware"]
-	path = devicefirmware
-	url = ../beacon-devicefirmware.git
-[submodule "deviceservice"]
-	path = deviceservice
-	url = ../beacon-deviceservice.git
-[submodule "fileservice"]
-	path = fileservice
-	url = ../beacon-fileservice.git
-[submodule "landingapp"]
-	path = landingapp
-	url = ../beacon-landingapp.git
-[submodule "mapservice"]
-	path = mapservice
-	url = ../beacon-mapservice.git
-[submodule "mobileapp"]
-	path = mobileapp
-	url = ../Beacon-MobileApp.git
-[submodule "notificationservice"]
-	path = notificationservice
-	url = ../beacon-notificationservice.git
-[submodule "theftservice"]
-	path = theftservice
-	url = ../beacon-theftservice.git
-[submodule "userservice"]
-	path = userservice
-	url = ../Beacon-UserService.git
+[submodule "MobileApp"]
+	path = MobileApp
+	url = git@gitlab.com:beacon-team/Beacon-MobileApp.git
+[submodule "Infrastructure"]
+	path = Infrastructure
+	url = git@gitlab.com:beacon-team/infrastructure.git
+[submodule "MainService"]
+	path = MainService
+	url = git@gitlab.com:beacon-team/beacon-mainservice.git
+[submodule "LandingApp"]
+	path = LandingApp
+	url = git@gitlab.com:beacon-team/beacon-landingapp.git
+[submodule "DeviceFirmware"]
+	path = DeviceFirmware
+	url = git@gitlab.com:beacon-team/beacon-devicefirmware.git
+[submodule "BackOfficeApp"]
+	path = BackOfficeApp
+	url = git@gitlab.com:beacon-team/Beacon-BackOfficeApp.git
