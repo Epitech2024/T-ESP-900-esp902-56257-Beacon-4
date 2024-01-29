@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package protocol;
+
+message Device {
+    int64 device_serial_id = 1;
+}
+
+message Header {
+    int32 magic_number_1 = 1;
+    int32 magic_number_2 = 2;
+    int32 magic_number_3 = 3;
+    int32 magic_number_4 = 4;
+    // 16 | 8 | 8
+    // [ Major ] [Minor] [SubMinor]
+    // [0-65535] [0-255] [  0-255 ]
+    int32 protocol_version = 5;
+    int32 body_size = 6;
+}
+
+message Coordinates {
+    float latitude = 1; 
+    float longitude = 2; 
+    float altitude = 3;
+}
+
+message Action {
+    int32 action_id = 1;
+}
+
+message DeviceStatus {
+    float battery_level = 1;
+    float network_signal_strength = 2;
+    float gps_signal_strength = 3;
+}
+
+// Device => Gateways => Backend
+message TelemetryPacket {
+    Device device_destination = 1;
+    Device device_source = 2;
+    Coordinates device_coordinates = 3;
+    DeviceStatus device_status = 4;
+    int64 timestamp = 5;
+    int32 crc = 6;
+}
+
+// Device => Gateways => Backend
+message PingPacket {
+    Device device_destination = 1;
+    Device device_source = 2;
+    int64 timestamp = 3;
+    int32 crc = 4;
+}
+
+// Backend => Gateways => Device
+message TransferPacket {
+    Device device_destination = 1;
+    Device device_source = 2;
+    repeated Action actions = 3;
+    int64 timestamp = 4;
+    int32 crc = 5;
+}
