@@ -16,3 +16,6 @@
 [submodule "BackOfficeApp"]
 	path = BackOfficeApp
 	url = git@gitlab.com:beacon-team/Beacon-BackOfficeApp.git
+[submodule "beacon-gatewayfirmware"]
+	path = beacon-gatewayfirmware
+	url = git@gitlab.com:beacon-team/beacon-gatewayfirmware.git
