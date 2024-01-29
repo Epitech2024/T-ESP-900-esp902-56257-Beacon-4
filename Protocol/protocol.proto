@@ -2,20 +2,22 @@ syntax = "proto3";
 
 package protocol;
 
-message Device {
-    int64 device_serial_id = 1;
+message DeviceId {
+    int64 value = 1;
 }
 
 message Header {
-    int32 magic_number_1 = 1;
-    int32 magic_number_2 = 2;
-    int32 magic_number_3 = 3;
-    int32 magic_number_4 = 4;
+    int64 magic_number = 1;
     // 16 | 8 | 8
     // [ Major ] [Minor] [SubMinor]
     // [0-65535] [0-255] [  0-255 ]
-    int32 protocol_version = 5;
-    int32 body_size = 6;
+    int32 protocol_version = 2;
+    int32 body_size = 3;
+}
+
+message Footer {
+    int64 timestamp = 1;
+    int32 crc = 2;
 }
 
 message Coordinates {
@@ -24,8 +26,11 @@ message Coordinates {
     float altitude = 3;
 }
 
-message Action {
-    int32 action_id = 1;
+enum Action {
+    UNKNOWN = 0;
+    PARK = 1;
+    RING = 2;
+    SLEEP = 3;
 }
 
 message DeviceStatus {
@@ -36,27 +41,21 @@ message DeviceStatus {
 
 // Device => Gateways => Backend
 message TelemetryPacket {
-    Device device_destination = 1;
-    Device device_source = 2;
+    DeviceId destination_device_id = 1;
+    DeviceId source_device_id = 2;
     Coordinates device_coordinates = 3;
     DeviceStatus device_status = 4;
-    int64 timestamp = 5;
-    int32 crc = 6;
 }
 
 // Device => Gateways => Backend
 message PingPacket {
-    Device device_destination = 1;
-    Device device_source = 2;
-    int64 timestamp = 3;
-    int32 crc = 4;
+    DeviceId device_destination = 1;
+    DeviceId device_source = 2;
 }
 
 // Backend => Gateways => Device
 message TransferPacket {
-    Device device_destination = 1;
-    Device device_source = 2;
+    DeviceId destination_device_id = 1;
+    DeviceId source_device_id = 2;
     repeated Action actions = 3;
-    int64 timestamp = 4;
-    int32 crc = 5;
 }
