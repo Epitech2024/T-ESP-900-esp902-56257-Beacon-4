@@ -19,3 +19,6 @@
 [submodule "GatewayFirmware"]
 	path = GatewayFirmware
 	url = git@gitlab.com:beacon-team/beacon-gatewayfirmware.git
+[submodule "EmbeddedProto"]
+	path = EmbeddedProto
+	url = https://github.com/Embedded-AMS/EmbeddedProto.git
