@@ -1,10 +1,6 @@
 syntax = "proto3";
 
-package protocol;
-
-message DeviceId {
-    int64 value = 1;
-}
+package Protocol;
 
 message Header {
     int64 magic_number = 1;
@@ -12,7 +8,9 @@ message Header {
     // [ Major ] [Minor] [SubMinor]
     // [0-65535] [0-255] [  0-255 ]
     int32 protocol_version = 2;
-    int32 body_size = 3;
+    DeviceId destination = 3;
+    DeviceId source = 4;
+    PacketID packetID = 5;
 }
 
 message Footer {
@@ -26,11 +24,15 @@ message Coordinates {
     float altitude = 3;
 }
 
+message DeviceId {
+    int64 value = 1;
+}
+
 enum Action {
-    UNKNOWN = 0;
-    PARK = 1;
-    RING = 2;
-    SLEEP = 3;
+    ACTION_UNKNOWN = 0;
+    ACTION_PARK = 1;
+    ACTION_RING = 2;
+    ACTION_SLEEP = 3;
 }
 
 message DeviceStatus {
@@ -39,23 +41,25 @@ message DeviceStatus {
     float gps_signal_strength = 3;
 }
 
+enum PacketID {
+    PACKET_ID_UNKNOWN = 0;
+    PACKET_ID_TELEMETRY = 1;
+    PACKET_ID_PING = 2;
+    PACKET_ID_ACTION = 3;
+}
+
 // Device => Gateways => Backend
 message TelemetryPacket {
-    DeviceId destination_device_id = 1;
-    DeviceId source_device_id = 2;
-    Coordinates device_coordinates = 3;
-    DeviceStatus device_status = 4;
+    Coordinates coordinates = 3;
+    DeviceStatus status = 4;
 }
 
 // Device => Gateways => Backend
 message PingPacket {
-    DeviceId device_destination = 1;
-    DeviceId device_source = 2;
+    string content = 1;
 }
 
 // Backend => Gateways => Device
-message TransferPacket {
-    DeviceId destination_device_id = 1;
-    DeviceId source_device_id = 2;
+message ActionPacket {
     repeated Action actions = 3;
 }
